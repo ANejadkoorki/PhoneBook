@@ -29,6 +29,37 @@
     </div>
     <div class="container">
         <table class="table" id="table"></table>
+{#    Paginator#}
+        {% if pagination %}
+            <div id="paginator">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        {% if pagination.has_previous %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                            </li>
+                        {% endif %}
+
+                        <li class="page-item active">
+                            <span class="page-link">{{ page_obj.number }}<span class="sr-only">(current)</span></span>
+                        </li>
+
+                        {% if pagination.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 {% block page_scripts %}
@@ -54,11 +85,12 @@
                             success_message_div.append(my_div)
                             empty_table.empty()
                             {#empty table is in up#}
-                            var table_initial = '<thead><tr><th scope="col">ID</th><th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Phone Number</th></tr></thead>';
+                            var table_initial = '<thead><tr><th scope="col">ID</th><th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Phone Number</th><th scope="col">Edit Entry</th></tr></thead>';
                             $(response.result_objects).each(function (index, obj) {
                                 table_initial += '<tbody><tr><th scope="row">' + obj.id + '</th><td>' + obj.first_name + '</td><td>' + obj.last_name + '</td><td>' + obj.phone_number + '</td></tr></tbody>';
+                                {#<td><a href="{% url 'PhoneBook:edit-entry' obj.id %}">🖍</a></td>#}
                             });
-                            var count_of_objects = '<h1 class="h1">The count of numbers found is "' + response.count + '"</h1>';
+                            var count_of_objects = '<h1 class="h1">The count of founded numbers is "' + response.count + '"</h1>';
                             empty_table.append(table_initial)
                             empty_table.append(count_of_objects)
                         },

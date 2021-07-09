@@ -1,10 +1,12 @@
 # Create your views here.
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from . import models
 
@@ -41,6 +43,7 @@ class AddEntry(LoginRequiredMixin, CreateView):
 class SerarchEntry(LoginRequiredMixin, ListView):
     model = models.PhoneBook
     queryset = model.objects
+    extra_context = dict()
 
     # ask question about how to access to queryset`s string object
     def get(self, request, *args, **kwargs):
@@ -49,12 +52,18 @@ class SerarchEntry(LoginRequiredMixin, ListView):
         if phone_number:
             if search_mode == 'exactly this number':
                 Entries = self.queryset.filter(phone_number__exact=phone_number, creator=self.request.user)
+                # Paginator
+                page_obj = Paginator(Entries, 4)
+                page_number = request.GET.get('page')
+                page_obj = page_obj.get_page(page_number)
+                self.extra_context.update({'pag_obj': page_obj})
+                self.extra_context.update({'pagination': page_obj})
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
                         'success_message': 'Successfull! Number has been found',
                         'result_objects': list(Entries.values()),
-                        'count': Entries.count()
+                        'count': Entries.count(),
                     }, status=201)
                 else:
                     return JsonResponse(data={
@@ -63,6 +72,11 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                     }, status=404)
             elif search_mode == 'starts with this number':
                 Entries = self.queryset.filter(phone_number__startswith=phone_number, creator=self.request.user)
+                # Paginator
+                page_obj = Paginator(Entries, 4)
+                page_number = request.GET.get('page')
+                page_obj = page_obj.get_page(page_number)
+                self.extra_context.update({'pag_obj': page_obj})
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -77,6 +91,11 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                     }, status=404)
             elif search_mode == 'ends with this number':
                 Entries = self.queryset.filter(phone_number__endswith=phone_number, creator=self.request.user)
+                # Paginator
+                page_obj = Paginator(Entries, 4)
+                page_number = request.GET.get('page')
+                page_obj = page_obj.get_page(page_number)
+                self.extra_context.update({'pag_obj': page_obj})
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -91,6 +110,11 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                     }, status=404)
             elif search_mode == 'contains this number':
                 Entries = self.queryset.filter(phone_number__contains=phone_number, creator=self.request.user)
+                # Paginator
+                page_obj = Paginator(Entries, 4)
+                page_number = request.GET.get('page')
+                page_obj = page_obj.get_page(page_number)
+                self.extra_context.update({'pag_obj': page_obj})
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -105,4 +129,13 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                     }, status=404)
         return render(request, template_name='PhoneBook/SearchEntryTemplate.html')
 
-#
+
+class EditEntry(UpdateView):
+    model = models.PhoneBook
+    fields = (
+        'first_name',
+        'last_name',
+        'phone_number',
+    )
+    success_url = reverse_lazy('firstApp:posts')
+    template_name = 'PhoneBook/AddEntryTemplate.html'

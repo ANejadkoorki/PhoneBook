@@ -19,21 +19,27 @@
         {#        messages finished#}
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+{#            {% with field = form.first_name %}#}
             <div class="form-group">
-                <label for="first_name">First name : </label>
-                <input type="text" class="form-control" id="first_name" name="first_name"
+                <label for="{{ field.auto_id }}">First name : </label>
+                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.first_name }}" value="{{ field.initial }}"
                        placeholder="Enter your first name">
             </div>
+{#            {% endwith %}#}
+{#            {% with field = form.last_name %}#}
             <div class="form-group">
-                <label for="last_name">Last name : </label>
-                <input type="text" class="form-control" id="last_name" name="last_name"
-                       placeholder="Enter your Last name">
+                <label for="{{ field.auto_id }}">Last name : </label>
+                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.last_name }}" value="{{ field.initial }}"
+                       placeholder="Enter your last name">
             </div>
+{#            {% endwith %}#}
+{#            {% with field = form.phone_number %}#}
             <div class="form-group">
-                <label for="phone_number">Phone Number : </label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                <label for="{{ field.auto_id }}">Phone Number : </label>
+                <input type="text" class="form-control" id="{{ field.auto_id }}" name="{{ field.phone_number }}" value="{{ field.initial }}"
                        placeholder="Enter your Phone Number">
             </div>
+{#            {% endwith %}#}
         </form>
         <button class="btn btn-primary" id="submit_btn">Add Entry</button>
     </div>
