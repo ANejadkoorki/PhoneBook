@@ -41,3 +41,5 @@ class Logout(RedirectView):
         logout(request)
         messages.success(request, 'You`ve been loged out successfully!!!')
         return redirect('PhoneBook:add-entry')
+
+
