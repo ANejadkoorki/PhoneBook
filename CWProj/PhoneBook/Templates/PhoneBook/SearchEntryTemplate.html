@@ -1,0 +1,77 @@
+{% extends 'PhoneBook/BaseTemplate.html' %}
+{% block page_title %}
+    <title>{{ title }}Search Entry</title>
+{% endblock %}
+{% block page_content %}
+    <div class="container mt-4">
+        <h1 class="h1">Search Your Entry Here : </h1>
+        <div id="message-div">
+            {#            messages div#}
+        </div>
+        <form method="get" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="phone_number">Please Enter The Phone Number :</label>
+                <input class="form-control" type="text" id="phone_number" name="phone_number"
+                       placeholder="Please Enter The Number Here">
+            </div>
+            <div class="form-group">
+                <label for="search_mode">Select the mode of search you want :</label>
+                <select class="form-control" id="search_mode">
+                    <option>exactly this number</option>
+                    <option>starts with this number</option>
+                    <option>ends with this number</option>
+                    <option>contains this number</option>
+                </select>
+            </div>
+        </form>
+        <button id="search_btn" type="submit" class="btn btn-primary">Search</button>
+    </div>
+    <div class="container">
+        <table class="table" id="table"></table>
+    </div>
+{% endblock %}
+{% block page_scripts %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function () {
+            $('#search_btn').on('click', function (event) {
+                var phone_number = $('#phone_number').val();
+                var search_mode = $('#search_mode').val();
+                var csrf = '{{ csrf_token }}';
+                var empty_table = $('#table');
+                $.ajax({
+                    url: '{% url 'PhoneBook:search-entry' %}',
+                    method: 'GET',
+                    data: {
+                        phone_number: phone_number,
+                        search_mode: search_mode,
+                    },
+                    success:
+                        function (response) {
+                            var success_message_div = $('#message-div')
+                            var my_div = '<div class="alert alert-success">' + response.success_message + '<button type="button" data-dismiss="alert" class="close">&times;</button></div>'
+                            success_message_div.append(my_div)
+                            empty_table.empty()
+                            {#empty table is in up#}
+                            var table_initial = '<thead><tr><th scope="col">ID</th><th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Phone Number</th></tr></thead>';
+                            $(response.result_objects).each(function (index, obj) {
+                                table_initial += '<tbody><tr><th scope="row">' + obj.id + '</th><td>' + obj.first_name + '</td><td>' + obj.last_name + '</td><td>' + obj.phone_number + '</td></tr></tbody>';
+                            });
+                            var count_of_objects = '<h1 class="h1">The count of numbers found is "' + response.count + '"</h1>';
+                            empty_table.append(table_initial)
+                            empty_table.append(count_of_objects)
+                        },
+                    error:
+                        function (response) {
+                            empty_table.empty()
+                            var error_message_div = $('#message-div')
+                            var my_div = '<div class="alert alert-danger">' + response.responseJSON.error_message + '<button type="button" data-dismiss="alert" class="close">&times;</button></div>'
+                            error_message_div.append(my_div)
+                        },
+                })
+
+            });
+        });
+    </script>
+{% endblock %}
