@@ -29,6 +29,7 @@ class AddEntry(LoginRequiredMixin, CreateView):
         }, status=400)
 
     def form_valid(self, form):
+        form.instance.creator = self.request.user  # we can access to users like this
         form.save()
         return JsonResponse(data={
             'success': 'True',
@@ -47,7 +48,7 @@ class SerarchEntry(LoginRequiredMixin, ListView):
         search_mode = request.GET.get('search_mode')
         if phone_number:
             if search_mode == 'exactly this number':
-                Entries = self.queryset.filter(phone_number__exact=phone_number)
+                Entries = self.queryset.filter(phone_number__exact=phone_number, creator=self.request.user)
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -61,7 +62,7 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                         'error_message': 'The Number not found!!!',
                     }, status=404)
             elif search_mode == 'starts with this number':
-                Entries = self.queryset.filter(phone_number__startswith=phone_number)
+                Entries = self.queryset.filter(phone_number__startswith=phone_number, creator=self.request.user)
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -75,7 +76,7 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                         'error_message': 'The Number not found!!!',
                     }, status=404)
             elif search_mode == 'ends with this number':
-                Entries = self.queryset.filter(phone_number__endswith=phone_number)
+                Entries = self.queryset.filter(phone_number__endswith=phone_number, creator=self.request.user)
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
@@ -89,7 +90,7 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                         'error_message': 'The Number not found!!!',
                     }, status=404)
             elif search_mode == 'contains this number':
-                Entries = self.queryset.filter(phone_number__contains=phone_number)
+                Entries = self.queryset.filter(phone_number__contains=phone_number, creator=self.request.user)
                 if Entries:
                     return JsonResponse(data={
                         'success': 'True',
