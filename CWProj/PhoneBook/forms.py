@@ -21,3 +21,6 @@ class AddEntryForm(forms.ModelForm):
 
 
 
+
+
+
