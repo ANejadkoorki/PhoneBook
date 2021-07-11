@@ -11,3 +11,9 @@ class AddEntryForm(forms.ModelForm):
             'last_name',
             'phone_number',
         ]
+
+
+
+
+
+
