@@ -32,6 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'PhoneBook:search-entry' %}">Search Entry</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'PhoneBook:contacts' %}">Contacts</a>
+                </li>
                 {% if  user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>

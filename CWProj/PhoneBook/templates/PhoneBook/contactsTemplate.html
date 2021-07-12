@@ -1,0 +1,42 @@
+{% extends 'PhoneBook/BaseTemplate.html' %}
+{% block page_title %}
+    <title>{{ title }}Contacts</title>
+{% endblock %}
+{% block page_content %}
+    <div class="container mt-4">
+        {#        messages#}
+        <div id="message-div">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                        <button type="button" data-dismiss="alert" class="close">&times;</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {#        messages finished#}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Edit Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{ object.id }}</th>
+                    <td>{{ object.first_name }}</td>
+                    <td>{{ object.last_name }}</td>
+                    <td>{{ object.phone_number }}</td>
+                    <td><a href="{% url 'PhoneBook:edit-entry' object.id %}">🖋</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

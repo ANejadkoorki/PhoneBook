@@ -28,8 +28,8 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/CWProj/PhoneBook/Templates" />
-        <option value="$MODULE_DIR$/CWProj/users/Templates" />
+        <option value="$MODULE_DIR$/CWProj/PhoneBook/templates" />
+        <option value="$MODULE_DIR$/CWProj/users/templates" />
       </list>
     </option>
   </component>

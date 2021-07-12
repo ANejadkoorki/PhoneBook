@@ -19,27 +19,21 @@
         {#        messages finished#}
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-{#            {% with field = form.first_name %}#}
             <div class="form-group">
                 <label for="first_name">First name : </label>
                 <input type="text" class="form-control" id="first_name" name="first_name"
                        placeholder="Enter your first name">
             </div>
-{#            {% endwith %}#}
-{#            {% with field = form.last_name %}#}
             <div class="form-group">
                 <label for="last_name">Last name : </label>
                 <input type="text" class="form-control" id="last_name" name="last_name"
                        placeholder="Enter your last name">
             </div>
-{#            {% endwith %}#}
-{#            {% with field = form.phone_number %}#}
             <div class="form-group">
                 <label for="phone_number">Phone Number : </label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                        placeholder="Enter your Phone Number">
             </div>
-{#            {% endwith %}#}
         </form>
         <button class="btn btn-primary" id="submit_btn">Add Entry</button>
     </div>

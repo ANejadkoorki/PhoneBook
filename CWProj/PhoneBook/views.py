@@ -1,10 +1,13 @@
 # Create your views here.
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, UpdateView
 
@@ -70,14 +73,28 @@ class SerarchEntry(LoginRequiredMixin, ListView):
         return render(request, template_name='PhoneBook/SearchEntryTemplate.html')
 
 
-class EditEntry(UpdateView):
+class Contacts(LoginRequiredMixin, ListView):
+    model = models.PhoneBook
+    template_name = 'PhoneBook/contactsTemplate.html'
+
+    def get_queryset(self):
+        query_set = models.PhoneBook.objects.filter(creator=self.request.user)
+        return query_set
+
+
+class EditEntry(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = models.PhoneBook
     fields = (
         'first_name',
         'last_name',
         'phone_number',
+        'id'
     )
-    success_url = reverse_lazy('firstApp:posts')
-    template_name = 'PhoneBook/AddEntryTemplate.html'
+    success_message = 'Your Entry Has been Updated Successfully!!! '
+    success_url = reverse_lazy('PhoneBook:contacts')
+    template_name = 'PhoneBook/editEntryTemplate.html'
 
-
+    def form_invalid(self, form):
+        pk = self.get_object().id
+        messages.error(self.request, 'Please Edit Your Entry Correctly!!!')
+        return redirect('PhoneBook:edit-entry', pk)
