@@ -79,3 +79,5 @@ class EditEntry(UpdateView):
     )
     success_url = reverse_lazy('firstApp:posts')
     template_name = 'PhoneBook/AddEntryTemplate.html'
+
+
