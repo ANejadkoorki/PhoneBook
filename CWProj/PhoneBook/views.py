@@ -8,21 +8,18 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, UpdateView
 
-from . import models
+from . import models, forms
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AddEntry(LoginRequiredMixin, CreateView):
     model = models.PhoneBook
-    fields = (
-        'first_name',
-        'last_name',
-        'phone_number',
-    )
+    form_class = forms.AddEntryForm
     template_name = 'PhoneBook/AddEntryTemplate.html'
+    extra_context = dict()
 
-    def get(self, request, *args, **kwargs):
-        return render(request, template_name='PhoneBook/AddEntryTemplate.html')
+    # def get(self, request, *args, **kwargs):
+    #     return render(request, template_name='PhoneBook/AddEntryTemplate.html')
 
     def form_invalid(self, form):
         return JsonResponse(data={
@@ -43,90 +40,33 @@ class AddEntry(LoginRequiredMixin, CreateView):
 class SerarchEntry(LoginRequiredMixin, ListView):
     model = models.PhoneBook
     queryset = model.objects
-    extra_context = dict()
 
     # ask question about how to access to queryset`s string object
     def get(self, request, *args, **kwargs):
         phone_number = request.GET.get('phone_number')
         search_mode = request.GET.get('search_mode')
+        entries = None
         if phone_number:
             if search_mode == 'exactly this number':
-                Entries = self.queryset.filter(phone_number__exact=phone_number, creator=self.request.user)
-                # Paginator
-                page_obj = Paginator(Entries, 4)
-                page_number = request.GET.get('page')
-                page_obj = page_obj.get_page(page_number)
-                self.extra_context.update({'pag_obj': page_obj})
-                self.extra_context.update({'pagination': page_obj})
-                if Entries:
-                    return JsonResponse(data={
-                        'success': 'True',
-                        'success_message': 'Successfull! Number has been found',
-                        'result_objects': list(Entries.values()),
-                        'count': Entries.count(),
-                    }, status=201)
-                else:
-                    return JsonResponse(data={
-                        'success': 'False',
-                        'error_message': 'The Number not found!!!',
-                    }, status=404)
+                entries = self.queryset.filter(phone_number__exact=phone_number, creator=self.request.user)
             elif search_mode == 'starts with this number':
-                Entries = self.queryset.filter(phone_number__startswith=phone_number, creator=self.request.user)
-                # Paginator
-                page_obj = Paginator(Entries, 4)
-                page_number = request.GET.get('page')
-                page_obj = page_obj.get_page(page_number)
-                self.extra_context.update({'pag_obj': page_obj})
-                if Entries:
-                    return JsonResponse(data={
-                        'success': 'True',
-                        'success_message': 'Successfull! Number has been found',
-                        'result_objects': list(Entries.values()),
-                        'count': Entries.count()
-                    }, status=201)
-                else:
-                    return JsonResponse(data={
-                        'success': 'False',
-                        'error_message': 'The Number not found!!!',
-                    }, status=404)
+                entries = self.queryset.filter(phone_number__startswith=phone_number, creator=self.request.user)
             elif search_mode == 'ends with this number':
-                Entries = self.queryset.filter(phone_number__endswith=phone_number, creator=self.request.user)
-                # Paginator
-                page_obj = Paginator(Entries, 4)
-                page_number = request.GET.get('page')
-                page_obj = page_obj.get_page(page_number)
-                self.extra_context.update({'pag_obj': page_obj})
-                if Entries:
-                    return JsonResponse(data={
-                        'success': 'True',
-                        'success_message': 'Successfull! Number has been found',
-                        'result_objects': list(Entries.values()),
-                        'count': Entries.count()
-                    }, status=201)
-                else:
-                    return JsonResponse(data={
-                        'success': 'False',
-                        'error_message': 'The Number not found!!!',
-                    }, status=404)
+                entries = self.queryset.filter(phone_number__endswith=phone_number, creator=self.request.user)
             elif search_mode == 'contains this number':
-                Entries = self.queryset.filter(phone_number__contains=phone_number, creator=self.request.user)
-                # Paginator
-                page_obj = Paginator(Entries, 4)
-                page_number = request.GET.get('page')
-                page_obj = page_obj.get_page(page_number)
-                self.extra_context.update({'pag_obj': page_obj})
-                if Entries:
-                    return JsonResponse(data={
-                        'success': 'True',
-                        'success_message': 'Successfull! Number has been found',
-                        'result_objects': list(Entries.values()),
-                        'count': Entries.count()
-                    }, status=201)
-                else:
-                    return JsonResponse(data={
-                        'success': 'False',
-                        'error_message': 'The Number not found!!!',
-                    }, status=404)
+                entries = self.queryset.filter(phone_number__contains=phone_number, creator=self.request.user)
+            if entries:
+                return JsonResponse(data={
+                    'success': 'True',
+                    'success_message': 'Successfull! Number has been found',
+                    'result_objects': list(entries.values()),
+                    'count': entries.count(),
+                }, status=201)
+            else:
+                return JsonResponse(data={
+                    'success': 'False',
+                    'error_message': 'The Number not found!!!',
+                }, status=404)
         return render(request, template_name='PhoneBook/SearchEntryTemplate.html')
 
 
