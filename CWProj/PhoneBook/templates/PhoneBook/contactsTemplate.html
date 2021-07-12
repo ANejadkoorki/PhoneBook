@@ -38,5 +38,30 @@
             {% endfor %}
             </tbody>
         </table>
+        {% if is_paginated %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <div class="pagination" style="color: #7abaff">
+                        <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" style="color: blue"
+                           href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                    </li>
+                {% endif %}
+                            <li class="page-item">
+                                <span class="page-current page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                            </li>
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                    <a class="page-link" style="color: blue"
+                       href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                    </li>
+                            {% endif %}
+                        </span>
+                    </div>
+                </ul>
+            </nav>
+        {% endif %}
     </div>
 {% endblock %}

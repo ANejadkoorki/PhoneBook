@@ -76,6 +76,7 @@ class SerarchEntry(LoginRequiredMixin, ListView):
 class Contacts(LoginRequiredMixin, ListView):
     model = models.PhoneBook
     template_name = 'PhoneBook/contactsTemplate.html'
+    paginate_by = 5
 
     def get_queryset(self):
         query_set = models.PhoneBook.objects.filter(creator=self.request.user)
