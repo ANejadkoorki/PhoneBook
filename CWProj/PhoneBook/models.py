@@ -12,4 +12,10 @@ class PhoneBook(models.Model):
     # Phone Book
     first_name = models.CharField(max_length=50, verbose_name='first name')
     last_name = models.CharField(max_length=50, verbose_name='last name')
-    phone_number = models.CharField(validators=[phone_regex], unique=True, max_length=11, verbose_name='phone number')
+    phone_number = models.CharField(validators=[phone_regex], max_length=11, verbose_name='phone number')
+
+    class Meta:
+        unique_together = [
+            'phone_number', 'creator'
+        ]
+

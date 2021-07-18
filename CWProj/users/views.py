@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.http import is_safe_url
 from django.views.decorators.csrf import csrf_exempt
@@ -23,6 +24,9 @@ class Login(FormView):
         password = form.cleaned_data['password']
         user = authenticate(self.request, username=username, password=password)
         if user:
+            self.request.session['activities'] = dict()
+            self.request.session['activities'].update({str(timezone.now()):'user logged in.'})
+            self.request.session.save()
             login(self.request, user)
             next_url = self.request.GET.get('next', '/')
             if is_safe_url(next_url, settings.ALLOWED_HOSTS):
@@ -41,4 +45,3 @@ class Logout(RedirectView):
         logout(request)
         messages.success(request, 'You`ve been loged out successfully!!!')
         return redirect('PhoneBook:add-entry')
-

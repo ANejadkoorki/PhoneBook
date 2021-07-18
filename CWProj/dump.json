@@ -1,0 +1,672 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add phone book",
+      "content_type": 7,
+      "codename": "add_phonebook"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change phone book",
+      "content_type": 7,
+      "codename": "change_phonebook"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete phone book",
+      "content_type": 7,
+      "codename": "delete_phonebook"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view phone book",
+      "content_type": 7,
+      "codename": "view_phonebook"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$8M0sDIDigi3DCdBdDqRlOJ$0eDbMO7UPS2YuhfxKNh9+NGE6LuS3FZbmqVHIVfRTCs=",
+      "last_login": "2021-07-15T06:00:10.729Z",
+      "is_superuser": true,
+      "username": "amirhossein",
+      "first_name": "",
+      "last_name": "",
+      "email": "a@a.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-07-09T05:43:19.785Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$RbA0hMNINeEUtSyjFhdaBu$9QDRXt8GVMcpXGtV5oyIyOI76oIXPnXTAWSmvu09X4U=",
+      "last_login": "2021-07-12T09:14:59.454Z",
+      "is_superuser": true,
+      "username": "farhad",
+      "first_name": "",
+      "last_name": "",
+      "email": "f@f.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-07-12T06:59:31.841Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "PhoneBook",
+      "model": "phonebook"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "1umejyitxohfnqlnx032pa7hdffm69lf",
+    "fields": {
+      "session_data": ".eJxVjMEOwiAQBf-FsyGwgIBH734DWRYqVQNJaU_Gf5cmPeh13sx7s4DbWsLW8xLmxC5MstMvi0jPXPchPbDeG6dW12WOfFf4sXZ-aym_rof7d1Cwl1EL9CoCGeHRChJOajDKTDAQITmvrU0xO23IASFYVDIKkORHdJ5As88XyOA3Vw:1m1tM2:PYJ11IENY5viOrSQUmaqnsBzdTUEqT-O3YKyun-rwe0",
+      "expire_date": "2021-07-23T16:27:54.437Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "6c5heky2u7ka0zgp4h3kkkbtljj5b64s",
+    "fields": {
+      "session_data": ".eJxVjMEOwiAQBf-FsyGwgIBH734DWRYqVQNJaU_Gf5cmPeh13sx7s4DbWsLW8xLmxC5MstMvi0jPXPchPbDeG6dW12WOfFf4sXZ-aym_rof7d1Cwl1EL9CoCGeHRChJOajDKTDAQITmvrU0xO23IASFYVDIKkORHdJ5As88XyOA3Vw:1m2sSN:7Me0acmkA7QCOnqQBG0YxTTBYE5PIxV79D7Em08azuA",
+      "expire_date": "2021-07-26T09:42:31.479Z"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 1,
+    "fields": {
+      "creator": 1,
+      "first_name": "amir hossein",
+      "last_name": "nejadkoorki",
+      "phone_number": "09134579448"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 2,
+    "fields": {
+      "creator": 1,
+      "first_name": "farhad",
+      "last_name": "ahmadi",
+      "phone_number": "09121586985"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 3,
+    "fields": {
+      "creator": 1,
+      "first_name": "ghasem",
+      "last_name": "rezai",
+      "phone_number": "09136547896"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 4,
+    "fields": {
+      "creator": 1,
+      "first_name": "asghar",
+      "last_name": "karami",
+      "phone_number": "09158542137"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 5,
+    "fields": {
+      "creator": 1,
+      "first_name": "ahmad",
+      "last_name": "rezai",
+      "phone_number": "09154786322"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 6,
+    "fields": {
+      "creator": 1,
+      "first_name": "hamid",
+      "last_name": "hassani",
+      "phone_number": "09125698749"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 7,
+    "fields": {
+      "creator": 1,
+      "first_name": "hamidreza",
+      "last_name": "mirzai",
+      "phone_number": "09196387892"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 8,
+    "fields": {
+      "creator": 1,
+      "first_name": "nader",
+      "last_name": "naderi",
+      "phone_number": "09178526358"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 9,
+    "fields": {
+      "creator": 1,
+      "first_name": "karam",
+      "last_name": "karami",
+      "phone_number": "09158536985"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 10,
+    "fields": {
+      "creator": 1,
+      "first_name": "karim",
+      "last_name": "bagheri",
+      "phone_number": "09183245674"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 11,
+    "fields": {
+      "creator": 1,
+      "first_name": "keramat",
+      "last_name": "najafi",
+      "phone_number": "09178521231"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 12,
+    "fields": {
+      "creator": 1,
+      "first_name": "abbasali",
+      "last_name": "ahmadi",
+      "phone_number": "09165742589"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 13,
+    "fields": {
+      "creator": 1,
+      "first_name": "alireza",
+      "last_name": "saberi",
+      "phone_number": "09103056984"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 14,
+    "fields": {
+      "creator": 1,
+      "first_name": "reza",
+      "last_name": "ebrahimi",
+      "phone_number": "09112155487"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 15,
+    "fields": {
+      "creator": 1,
+      "first_name": "sara",
+      "last_name": "razavi",
+      "phone_number": "09154623789"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 16,
+    "fields": {
+      "creator": 1,
+      "first_name": "hanie",
+      "last_name": "hamedani",
+      "phone_number": "09185632147"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 17,
+    "fields": {
+      "creator": 1,
+      "first_name": "amirali",
+      "last_name": "amini",
+      "phone_number": "09145236984"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 18,
+    "fields": {
+      "creator": 1,
+      "first_name": "hamideh",
+      "last_name": "ghasemi",
+      "phone_number": "09135246981"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 19,
+    "fields": {
+      "creator": 1,
+      "first_name": "alireza",
+      "last_name": "arab",
+      "phone_number": "09125412472"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 20,
+    "fields": {
+      "creator": 1,
+      "first_name": "javad",
+      "last_name": "amini",
+      "phone_number": "09134446982"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 21,
+    "fields": {
+      "creator": 1,
+      "first_name": "maryam",
+      "last_name": "najmi",
+      "phone_number": "09122477789"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 22,
+    "fields": {
+      "creator": 1,
+      "first_name": "milad",
+      "last_name": "hossein zadeh",
+      "phone_number": "09165478945"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 23,
+    "fields": {
+      "creator": 1,
+      "first_name": "vahid",
+      "last_name": "ghasemi",
+      "phone_number": "09136547852"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 24,
+    "fields": {
+      "creator": 2,
+      "first_name": "jasem",
+      "last_name": "pour mohammadi",
+      "phone_number": "09156985227"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 25,
+    "fields": {
+      "creator": 2,
+      "first_name": "koohyar",
+      "last_name": "hajebrahimi",
+      "phone_number": "09132478965"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 26,
+    "fields": {
+      "creator": 2,
+      "first_name": "morad",
+      "last_name": "nejadkoorki",
+      "phone_number": "09132478969"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 27,
+    "fields": {
+      "creator": 2,
+      "first_name": "golandam",
+      "last_name": "azizian",
+      "phone_number": "09132478960"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 28,
+    "fields": {
+      "creator": 2,
+      "first_name": "karam",
+      "last_name": "karampour",
+      "phone_number": "09132478967"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 29,
+    "fields": {
+      "creator": 2,
+      "first_name": "karim",
+      "last_name": "karimian",
+      "phone_number": "09132478963"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 31,
+    "fields": {
+      "creator": 1,
+      "first_name": "asghar",
+      "last_name": "jafarian",
+      "phone_number": "09165478537"
+    }
+  },
+  {
+    "model": "PhoneBook.phonebook",
+    "pk": 32,
+    "fields": {
+      "creator": 1,
+      "first_name": "hassan",
+      "last_name": "karami",
+      "phone_number": "09165478942"
+    }
+  }
+]
