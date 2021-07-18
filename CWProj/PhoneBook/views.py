@@ -90,14 +90,20 @@ class SerarchEntry(LoginRequiredMixin, ListView):
 class Contacts(LoginRequiredMixin, ListView):
     model = models.PhoneBook
     template_name = 'PhoneBook/contactsTemplate.html'
-    paginate_by = 5
 
     def get(self, request, *args, **kwargs):
         self.request.session['activities'].update({str(timezone.now()): 'visited contacts page.'})
         self.request.session.save()
-
         qs = self.get_queryset()
-        return render(request, template_name='PhoneBook/contactsTemplate.html', context={'object_list': qs})
+        paginated = Paginator(qs, 8)
+        paginated_page = paginated.get_page(request.GET.get('page', 1))
+        return render(
+            request,
+            template_name='PhoneBook/contactsTemplate.html',
+            context={
+                'object_list': paginated_page,
+                'page_obj': paginated,
+            })
 
     def get_queryset(self):
         query_set = models.PhoneBook.objects.filter(creator=self.request.user)
