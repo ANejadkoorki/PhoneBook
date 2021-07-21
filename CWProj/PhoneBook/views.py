@@ -12,7 +12,7 @@ from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
 from . import models, forms
 
@@ -160,3 +160,8 @@ class ActivitiesHistory(ListView):
         return render(request, 'PhoneBook/historyTemplate.html', context={
             'history': history
         })
+
+
+class RequestDetails(DetailView):
+    def get_user(self):
+        return self.request.user
