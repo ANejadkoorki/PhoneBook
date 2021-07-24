@@ -1,10 +1,11 @@
 {% extends 'PhoneBook/BaseTemplate.html' %}
+{% load i18n %}
 {% block page_title %}
     <title>{{ title }}AddEntry</title>
 {% endblock %}
 {% block page_content %}
     <div class="container mt-4">
-        <h1 class="h1">Add your Entry here</h1>
+        <h1 class="h1">{% trans 'Add your Entry here' %}</h1>
         {#        messages#}
         <div id="message-div">
             {% if messages %}
@@ -20,22 +21,22 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="first_name">First name : </label>
+                <label for="first_name">{% trans 'First name : ' %}</label>
                 <input type="text" class="form-control" id="first_name" name="first_name"
                        placeholder="Enter your first name">
             </div>
             <div class="form-group">
-                <label for="last_name">Last name : </label>
+                <label for="last_name">{% trans 'Last name :'  %}</label>
                 <input type="text" class="form-control" id="last_name" name="last_name"
                        placeholder="Enter your last name">
             </div>
             <div class="form-group">
-                <label for="phone_number">Phone Number : </label>
+                <label for="phone_number">{% trans 'Phone Number : ' %}</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                        placeholder="Enter your Phone Number">
             </div>
         </form>
-        <button class="btn btn-primary" id="submit_btn">Add Entry</button>
+        <button class="btn btn-primary" id="submit_btn">{% trans 'Add Entry' %}</button>
     </div>
 {% endblock %}
 {% block page_scripts %}

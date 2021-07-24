@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-24 10:10+0430\n"
+"PO-Revision-Date: 2021-07-24 09:52+0430\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#: PhoneBook/models.py:7
+msgid "phone number invalid"
+msgstr "شماره تلفن نادرست است"
+
+#: PhoneBook/models.py:12
+msgid "creator"
+msgstr "ایجاد کننده"
+
+#: PhoneBook/models.py:14
+msgid "first name"
+msgstr "نام"
+
+#: PhoneBook/models.py:15
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: PhoneBook/models.py:16
+msgid "phone number"
+msgstr "شماره تلفن"
+
+#: PhoneBook/models.py:22 PhoneBook/templates/PhoneBook/BaseTemplate.html:19
+msgid "Phone Book"
+msgstr "دفترچه تلفن"
+
+#: PhoneBook/templates/PhoneBook/AddEntryTemplate.html:8
+msgid "Add your Entry here"
+msgstr "مخاطب جدید خود را وارد کنید"
+
+#: PhoneBook/templates/PhoneBook/AddEntryTemplate.html:24
+#: PhoneBook/templates/PhoneBook/editEntryTemplate.html:22
+msgid "First name : "
+msgstr "نام: "
+
+#: PhoneBook/templates/PhoneBook/AddEntryTemplate.html:29
+msgid "Last name :"
+msgstr "نام خانوادگی:"
+
+#: PhoneBook/templates/PhoneBook/AddEntryTemplate.html:34
+#: PhoneBook/templates/PhoneBook/editEntryTemplate.html:32
+msgid "Phone Number : "
+msgstr "شماره تلفن "
+
+#: PhoneBook/templates/PhoneBook/AddEntryTemplate.html:39
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:31
+msgid "Add Entry"
+msgstr "ایجاد مخاطب"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:23
+msgid "Home"
+msgstr "خانه"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:27
+msgid "Log in"
+msgstr "ورود"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:34
+msgid "Search Entry"
+msgstr "جستجوی مخاطب"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:37
+msgid "Contacts"
+msgstr "مخاطبین"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:40
+msgid "History"
+msgstr "تاریخچه"
+
+#: PhoneBook/templates/PhoneBook/BaseTemplate.html:44
+msgid "Log out"
+msgstr "خروج"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:8
+msgid "Search Your Entry Here : "
+msgstr "مخاطب خود را جستجو کنید "
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:15
+msgid "Please Enter The Phone Number :"
+msgstr "لطفا شماره تلفن را وارد کنید:"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:20
+msgid "Select the mode of search you want :"
+msgstr "شیوه جستجوی خود را انتخاب کنید:"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:22
+msgid "exactly this number"
+msgstr "دقیقا این شماره"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:23
+msgid "starts with this number"
+msgstr "با این شماره شروع شود"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:24
+msgid "ends with this number"
+msgstr "با این شماره تمام شود"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:25
+msgid "contains this number"
+msgstr "شامل این شماره باشد"
+
+#: PhoneBook/templates/PhoneBook/SearchEntryTemplate.html:29
+msgid "Search"
+msgstr "جستجو"
+
+#: PhoneBook/templates/PhoneBook/contactsTemplate.html:23
+msgid "ID"
+msgstr "شناسه"
+
+#: PhoneBook/templates/PhoneBook/contactsTemplate.html:24
+msgid "First Name"
+msgstr "نام"
+
+#: PhoneBook/templates/PhoneBook/contactsTemplate.html:25
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: PhoneBook/templates/PhoneBook/contactsTemplate.html:26
+msgid "Phone Number"
+msgstr "شماره تلفن"
+
+#: PhoneBook/templates/PhoneBook/contactsTemplate.html:27
+msgid "Edit Number"
+msgstr "ویرایش شماره"
+
+#: PhoneBook/templates/PhoneBook/editEntryTemplate.html:18
+msgid "Edit your Entry here"
+msgstr "مخاطب خود را اینجا ویرایش کنید"
+
+#: PhoneBook/templates/PhoneBook/editEntryTemplate.html:27
+msgid "Last name : "
+msgstr "نام خانوادگی "
+
+#: PhoneBook/templates/PhoneBook/editEntryTemplate.html:36
+msgid "Edit Entry"
+msgstr "ویرایش مخاطب"
+
+#: PhoneBook/templates/PhoneBook/historyTemplate.html:7
+msgid "time"
+msgstr "زمان"
+
+#: PhoneBook/templates/PhoneBook/historyTemplate.html:8
+msgid "activity"
+msgstr "فعالیت"
+
+#: PhoneBook/views.py:27
+msgid "visiting Add Entry page"
+msgstr "بازدید از صفحه ایجاد مخاطب"
+
+#: PhoneBook/views.py:33
+msgid "trying to add an entry but it was invalid."
+msgstr "تلاش برای ایجاد مخاطب ولی ناموفق."
+
+#: PhoneBook/views.py:37
+msgid "Your Entry is Invalid Or Exists!!"
+msgstr "مخاطب شما وجود دارد یا اینکه اشتباه ایجاد شده است!"
+
+#: PhoneBook/views.py:43
+msgid "An entry was added."
+msgstr "یک مخاطب ایجاد شد."
+
+#: PhoneBook/views.py:47
+msgid "The Entry Was Created Successfully"
+msgstr "مخاطب با موفقیت ایجاد شد"
+
+#: PhoneBook/views.py:71
+msgid "searched in entries."
+msgstr "در مخاطبان جستجو صورت گرفت."
+
+#: PhoneBook/views.py:75
+msgid "Successfull! Number has been found"
+msgstr "موفق!! شماره پیدا شد"
+
+#: PhoneBook/views.py:81
+msgid "searched in entries but unsuccessful."
+msgstr "در مخاطبان جستجو صورت گرفت ولی ناموفق."
+
+#: PhoneBook/views.py:85
+msgid "The Number not found!!!"
+msgstr "شماره ای پیدا نشد!!!"
+
+#: PhoneBook/views.py:87
+msgid "visited search entry page."
+msgstr "بازدید از صفحه جستجوی مخاطبان."
+
+#: PhoneBook/views.py:97
+msgid "visited contacts page."
+msgstr "بازدید از صفحه لیست مخاطبان."
+
+#: PhoneBook/views.py:124
+msgid "Your Entry Has been Updated Successfully!!! "
+msgstr "مخاطب شما با موفقیت ویرایش شد "
+
+#: PhoneBook/views.py:129
+msgid "visited Edit Entry page."
+msgstr "بازدید از صفحه ویرایش مخاطبان."
+
+#: PhoneBook/views.py:135
+msgid "Edited An Entry."
+msgstr "یک مخاطب ویرایش شد."
+
+#: PhoneBook/views.py:137
+msgid "Your Entry Has been Updated Successfully!!!"
+msgstr "مخاطب شما با موفقیت ویرایش شد!"
+
+#: PhoneBook/views.py:141
+msgid "Editing Entry was unsuccessful."
+msgstr "ویرایش مخاطب ناموفق بود."
+
+#: PhoneBook/views.py:144
+msgid "Please Edit Your Entry Correctly!!!"
+msgstr "لطفا مخاطب خود را به طور صحیح ویرایش کنید!"
+
+#: PhoneBook/views.py:152
+msgid "visited history page."
+msgstr "بازدید از صفحه تاریخچه فعالیت ها."

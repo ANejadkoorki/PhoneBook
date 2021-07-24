@@ -1,4 +1,5 @@
 {% extends 'PhoneBook/BaseTemplate.html' %}
+{% load i18n %}
 {% block page_title %}
     <title>{{ title }}Contacts</title>
 {% endblock %}
@@ -19,11 +20,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Edit Number</th>
+                <th scope="col">{% trans 'ID' %}</th>
+                <th scope="col">{% trans 'First Name' %}</th>
+                <th scope="col">{% trans 'Last Name' %}</th>
+                <th scope="col">{% trans 'Phone Number' %}</th>
+                <th scope="col">{% trans 'Edit Number' %}</th>
             </tr>
             </thead>
             <tbody>

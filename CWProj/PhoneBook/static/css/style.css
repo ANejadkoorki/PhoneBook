@@ -1,27 +1,24 @@
-/*
-Custom styles for our application
-*/
 @font-face {
-    font-family: "Vazir";
+    font-family: "Sahel";
     font-style: normal;
-    src: url("../fonts/vazir/Vazir-Regular.woff") format('woff'),
-    url("../fonts/vazir/Vazir-Regular.woff2") format('woff2');
-}
+    src: url("../fonts/sahel/Sahel-SemiBold.woff") format('woff'),
+         url("../fonts/sahel/Sahel-SemiBold.woff") format('woff');
 
+}
 body {
-    font-family: Vazir, serif;
+    font-family: Sahel, serif;
 }
 
 .nav-link {
-    font-family: Vazir, serif;
+    font-family: Sahel, serif;
 }
 
 p {
-    font-family: Vazir, serif;
+    font-family: Sahel, serif;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: Vazir, serif;
+    font-family: Sahel, serif;
     direction: rtl;
     text-align: right;
 }

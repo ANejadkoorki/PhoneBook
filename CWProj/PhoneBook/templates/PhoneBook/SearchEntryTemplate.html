@@ -1,31 +1,32 @@
 {% extends 'PhoneBook/BaseTemplate.html' %}
+{% load i18n %}
 {% block page_title %}
     <title>{{ title }}Search Entry</title>
 {% endblock %}
 {% block page_content %}
     <div class="container mt-4">
-        <h1 class="h1">Search Your Entry Here : </h1>
+        <h1 class="h1">{% trans 'Search Your Entry Here : '  %}</h1>
         <div id="message-div">
             {#            messages div#}
         </div>
         <form method="get" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="phone_number">Please Enter The Phone Number :</label>
+                <label for="phone_number">{% trans 'Please Enter The Phone Number :' %}</label>
                 <input class="form-control" type="text" id="phone_number" name="phone_number"
                        placeholder="Please Enter The Number Here">
             </div>
             <div class="form-group">
-                <label for="search_mode">Select the mode of search you want :</label>
+                <label for="search_mode">{% trans 'Select the mode of search you want :' %}</label>
                 <select class="form-control" id="search_mode">
-                    <option>exactly this number</option>
-                    <option>starts with this number</option>
-                    <option>ends with this number</option>
-                    <option>contains this number</option>
+                    <option>{% trans 'exactly this number' %}</option>
+                    <option>{% trans 'starts with this number' %}</option>
+                    <option>{% trans 'ends with this number' %}</option>
+                    <option>{% trans 'contains this number' %}</option>
                 </select>
             </div>
         </form>
-        <button id="search_btn" type="submit" class="btn btn-primary">Search</button>
+        <button id="search_btn" type="submit" class="btn btn-primary">{% trans 'Search' %}</button>
     </div>
     <div class="container">
         <table class="table" id="table"></table>
