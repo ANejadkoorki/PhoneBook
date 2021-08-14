@@ -1,7 +1,7 @@
 # Create your views here.
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -9,8 +9,11 @@ from django.utils.http import is_safe_url
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import FormView, RedirectView
 from django.utils.translation import ugettext as _
+from rest_framework import permissions
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.viewsets import ModelViewSet
 
-from . import forms
+from . import forms, serializers
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -26,7 +29,7 @@ class Login(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user:
             self.request.session['activities'] = dict()
-            self.request.session['activities'].update({str(timezone.now()):_('user logged in.')})
+            self.request.session['activities'].update({str(timezone.now()): _('user logged in.')})
             self.request.session.save()
             login(self.request, user)
             next_url = self.request.GET.get('next', '/')
@@ -46,3 +49,14 @@ class Logout(RedirectView):
         logout(request)
         messages.success(request, _('You`ve been loged out successfully!!!'))
         return redirect('PhoneBook:add-entry')
+
+
+"""
+    DRF
+"""
+
+
+class UserViewSet(ModelViewSet):
+    queryset = get_user_model().objects.all()
+    serializer_class = serializers.UserSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

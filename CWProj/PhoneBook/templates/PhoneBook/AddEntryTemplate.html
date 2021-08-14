@@ -1,11 +1,12 @@
 {% extends 'PhoneBook/BaseTemplate.html' %}
+{% load widget_tweaks %}
 {% load i18n %}
 {% block page_title %}
     <title>{{ title }}AddEntry</title>
 {% endblock %}
 {% block page_content %}
     <div class="container mt-4">
-        <h1 class="h1">{% trans 'Add your Entry here' %}</h1>
+        <h1 class="h1" style="text-align: left">{% trans 'Add your Entry here' %}</h1>
         {#        messages#}
         <div id="message-div">
             {% if messages %}
@@ -24,16 +25,20 @@
                 <label for="first_name">{% trans 'First name : ' %}</label>
                 <input type="text" class="form-control" id="first_name" name="first_name"
                        placeholder="Enter your first name">
+                {#                {% render_field form.first_name|add_class:"form-control" %}#}
+                {{ field.errors }}
             </div>
             <div class="form-group">
-                <label for="last_name">{% trans 'Last name :'  %}</label>
+                <label for="last_name">{% trans 'Last name :' %}</label>
                 <input type="text" class="form-control" id="last_name" name="last_name"
                        placeholder="Enter your last name">
+                {#                {% render_field form.last_name|add_class:"form-control" %}#}
             </div>
             <div class="form-group">
                 <label for="phone_number">{% trans 'Phone Number : ' %}</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                        placeholder="Enter your Phone Number">
+{#                {% render_field form.phone_number|add_class:"form-control" %}#}
             </div>
         </form>
         <button class="btn btn-primary" id="submit_btn">{% trans 'Add Entry' %}</button>
@@ -44,13 +49,13 @@
     <script>
         $(document).ready(function () {
             $('#submit_btn').on('click', function (event) {
-                var first_name = $('#first_name').val();
-                var last_name = $('#last_name').val();
-                var phone_number = $('#phone_number').val();
+                var first_name = $('{{  id_first_name }}').val();
+                var last_name = $('{{  id_last_name }}').val();
+                var phone_number = $('{{  id_phone_number }}').val();
                 var csrf = '{{ csrf_token }}'
                 $.ajax({
                     url: '{% url 'PhoneBook:add-entry' %}',
-                    method: 'POST',
+                    method: 'post',
                     data: {
                         first_name: first_name,
                         last_name: last_name,

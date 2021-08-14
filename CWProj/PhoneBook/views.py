@@ -1,7 +1,7 @@
 # Create your views here.
-
-
+import weasyprint
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
@@ -14,14 +14,18 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from django.utils.translation import ugettext as _
+from rest_framework import permissions
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.viewsets import ModelViewSet
 
-from . import models, forms
+from . import models, forms, serializers
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AddEntry(LoginRequiredMixin, CreateView):
     model = models.PhoneBook
     form_class = forms.AddEntryForm
+    template_name = 'PhoneBook/AddEntryTemplate.html'
 
     def get(self, request, *args, **kwargs):
         self.request.session['activities'].update({str(timezone.now()): _('visiting Add Entry page')})
@@ -112,6 +116,28 @@ class Contacts(LoginRequiredMixin, ListView):
         return query_set
 
 
+class ContactsPdf(LoginRequiredMixin, ListView):
+    """
+        this view used to get pdf of contacts
+    """
+    model = models.PhoneBook
+    template_name = 'PhoneBook/contactsPDF.html'
+
+    def get_queryset(self):
+        qs = self.model.objects.filter(creator=self.request.user)
+        return qs
+
+    def get(self, request, *args, **kwargs):
+        normal_rendered_page = super(ContactsPdf, self).get(request, *args, **kwargs)
+
+        rendered_content = normal_rendered_page.rendered_content
+
+        pdf = weasyprint.HTML(string=rendered_content, base_url='http://127.0.0.1:8000').write_pdf()
+
+        response = HttpResponse(pdf, content_type='application/pdf')
+        return response
+
+
 class EditEntry(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = models.PhoneBook
     fields = (
@@ -162,3 +188,21 @@ class ActivitiesHistory(LoginRequiredMixin, ListView):
         return render(request, 'PhoneBook/historyTemplate.html', context={
             'history': history
         })
+
+
+"""
+    DRF
+"""
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
+class PhoneBookViewSet(ModelViewSet):
+    queryset = models.PhoneBook.objects.all()
+    serializer_class = serializers.PhonebookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    pagination_class = StandardResultsSetPagination

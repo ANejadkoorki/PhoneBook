@@ -18,12 +18,21 @@ from PhoneBook import views
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from users import views as uviews
+from PhoneBook import views as pviews
+
+router = DefaultRouter()
+router.register('users', uviews.UserViewSet)
+router.register('PhoneBook', pviews.PhoneBookViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('PhoneBook/', include('PhoneBook.urls')),
     path('users/', include('users.urls')),
-    path('', views.AddEntry.as_view())
+    path('', views.AddEntry.as_view()),
+    path('api/v1/', include(router.urls)),
 ]
 
 
