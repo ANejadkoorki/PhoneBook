@@ -30,15 +30,18 @@ class AddEntry(LoginRequiredMixin, CreateView):
     def get(self, request, *args, **kwargs):
         self.request.session['activities'].update({str(timezone.now()): _('visiting Add Entry page')})
         self.request.session.save()
-        return render(request, template_name='PhoneBook/AddEntryTemplate.html')
+        return super().get(request, *args, **kwargs)
+        # context = self.get_context_data()
+        # return render(request, template_name='PhoneBook/AddEntryTemplate.html', context=context)
 
     def form_invalid(self, form):
+        error = form.errors
         self.request.session['activities'].update(
             {str(timezone.now()): _('trying to add an entry but it was invalid.')})
         self.request.session.save()
         return JsonResponse(data={
             'success': 'False',
-            'error_message': _('Your Entry is Invalid Or Exists!!'),
+            'error_message': _(f"{error}"),
         }, status=400)
 
     def form_valid(self, form):
