@@ -13,19 +13,20 @@
         <form method="get" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="phone_number">{% trans 'Please Enter The Phone Number :' %}</label>
-                <input class="form-control" type="text" id="phone_number" name="phone_number"
-                       placeholder="Please Enter The Number Here">
-{#                {% render_field form.phone_number class+="form-control" %}#}
+                <label for="id_phone_number">{% trans 'Please Enter The Phone Number :' %}</label>
+{#                <input class="form-control" type="text" id="phone_number" name="phone_number"#}
+{#                       placeholder="Please Enter The Number Here">#}
+                {% render_field form.phone_number class+="form-control" %}
             </div>
             <div class="form-group">
-                <label for="search_mode">{% trans 'Select the mode of search you want :' %}</label>
-                <select class="form-control" id="search_mode">
-                    <option>{% trans 'exactly this number' %}</option>
-                    <option>{% trans 'starts with this number' %}</option>
-                    <option>{% trans 'ends with this number' %}</option>
-                    <option>{% trans 'contains this number' %}</option>
-                </select>
+                <label for="id_search_mode">{% trans 'Select the mode of search you want :' %}</label>
+{#                <select class="form-control" id="search_mode">#}
+{#                    <option>{% trans 'exactly this number' %}</option>#}
+{#                    <option>{% trans 'starts with this number' %}</option>#}
+{#                    <option>{% trans 'ends with this number' %}</option>#}
+{#                    <option>{% trans 'contains this number' %}</option>#}
+{#                </select>#}
+                {% render_field form.search_mode class+="form-control" %}
             </div>
         </form>
         <button id="search_btn" type="submit" class="btn btn-primary">{% trans 'Search' %}</button>
@@ -40,8 +41,8 @@
     <script>
         $(document).ready(function () {
             $('#search_btn').on('click', function (event) {
-                var phone_number = $('#phone_number').val();
-                var search_mode = $('#search_mode').val();
+                var phone_number = $('#id_phone_number').val();
+                var search_mode = $('#id_search_mode').val();
                 var csrf = '{{ csrf_token }}';
                 var empty_table = $('#table');
                 $.ajax({

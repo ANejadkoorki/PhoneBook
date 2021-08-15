@@ -59,6 +59,7 @@ class AddEntry(LoginRequiredMixin, CreateView):
 class SerarchEntry(LoginRequiredMixin, ListView):
     model = models.PhoneBook
     queryset = model.objects
+    template_name = 'PhoneBook/SearchEntryTemplate.html'
 
     # ask question about how to access to queryset`s string object
     def get(self, request, *args, **kwargs):
@@ -93,7 +94,13 @@ class SerarchEntry(LoginRequiredMixin, ListView):
                 }, status=404)
         self.request.session['activities'].update({str(timezone.now()): _('visited search entry page.')})
         self.request.session.save()
-        return render(request, template_name='PhoneBook/SearchEntryTemplate.html')
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = {'form': forms.SearchEntryForm()}
+        return context
+
+
 
 
 class Contacts(LoginRequiredMixin, ListView):
